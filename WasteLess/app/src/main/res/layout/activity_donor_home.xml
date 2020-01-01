@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".activities.DonorHomeActivity">
+    tools:context=".activities.HomeActivity">
 
     <FrameLayout
         android:layout_width="match_parent"

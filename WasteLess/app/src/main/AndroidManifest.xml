@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
     <activity android:name="com.example.wasteless.activities.SignupActivity"></activity>
-        <activity android:name="com.example.wasteless.activities.DonorHomeActivity"></activity>
+        <activity android:name="com.example.wasteless.activities.HomeActivity"></activity>
     </application>
 
 </manifest>

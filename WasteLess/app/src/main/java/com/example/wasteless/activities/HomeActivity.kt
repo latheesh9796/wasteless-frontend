@@ -9,7 +9,7 @@ import com.example.wasteless.fragments.PickupFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_donor_home.*
 
-class DonorHomeActivity: CustomAppActivity() {
+class HomeActivity: CustomAppActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donor_home)
