@@ -48,7 +48,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
+                android:background="@android:color/transparent"
                 android:inputType="text"
                 android:id="@+id/nameET"
                 android:maxLines="1" />
@@ -73,7 +73,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
+                android:background="@android:color/transparent"
                 android:inputType="textEmailAddress"
                 android:id="@+id/emailET"
                 android:maxLines="1" />
@@ -96,7 +96,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
+                android:background="@android:color/transparent"
                 android:inputType="textPassword"
                 android:id="@+id/passwordET"
                 android:maxLines="1" />
@@ -119,7 +119,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
+                android:background="@android:color/transparent"
                 android:inputType="textPassword"
                 android:id="@+id/retypePasswordET"
                 android:maxLines="1" />
@@ -142,7 +142,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
+                android:background="@android:color/transparent"
                 android:inputType="text"
                 android:id="@+id/addressOneET"
                 android:maxLines="1" />
@@ -165,7 +165,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
+                android:background="@android:color/transparent"
                 android:id="@+id/addressTwoET"
                 android:inputType="text"
                 android:maxLines="1" />
@@ -188,7 +188,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
+                android:background="@android:color/transparent"
                 android:id="@+id/cityET"
                 android:inputType="text"
                 android:maxLines="1" />
@@ -211,7 +211,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
+                android:background="@android:color/transparent"
                 android:inputType="text"
                 android:id="@+id/stateET"
                 android:maxLines="1" />

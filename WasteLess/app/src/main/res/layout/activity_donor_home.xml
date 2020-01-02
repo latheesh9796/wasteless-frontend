@@ -8,13 +8,29 @@
     android:layout_height="match_parent"
     android:gravity="center"
     tools:context=".activities.HomeActivity">
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:id="@+id/home_toolbar"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="Wasteless"
+            app:layout_constraintStart_toStartOf="parent"
+            app:titleTextColor="@color/colorWhite"
+            android:background="@color/colorPrimary"
+            ></androidx.appcompat.widget.Toolbar>
+        <FrameLayout
+            android:layout_marginTop="?attr/actionBarSize"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/container"
+            app:layout_constraintTop_toBottomOf="@+id/bottom_navigation"
+            app:layout_constraintBottom_toTopOf="@+id/home_toolbar"
+            >
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/container"
-        >
-    </FrameLayout>
+        </FrameLayout>
+
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"

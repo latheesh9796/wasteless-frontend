@@ -27,7 +27,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:background="@color/colorWhite"
+            android:background="@android:color/transparent"
             android:layout_height="120dp"
             android:inputType="textMultiLine"
             android:lines="8"
@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:background="@color/colorWhite"
+            android:background="@android:color/transparent"
             android:id="@+id/donate_addressOneET"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -79,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:background="@color/colorWhite"
+            android:background="@android:color/transparent"
             android:id="@+id/donate_addressTwoET"
             android:inputType="text"
             android:maxLines="1" />
@@ -103,7 +103,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:background="@color/colorWhite"
+            android:background="@android:color/transparent"
             android:id="@+id/donate_cityET"
             android:inputType="text"
             android:maxLines="1" />
@@ -128,7 +128,7 @@
             android:layout_height="wrap_content"
             android:inputType="text"
 
-            android:background="@color/colorWhite"
+            android:background="@android:color/transparent"
             android:id="@+id/donate_stateET"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
