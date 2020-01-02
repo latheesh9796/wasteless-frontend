@@ -17,7 +17,7 @@ class LoginActivity : CustomAppActivity() {
 
     private fun setButtonActions() {
         loginButton.setOnClickListener {
-            val intent = Intent(applicationContext, DonorHomeActivity::class.java)
+            val intent = Intent(applicationContext, HomeActivity::class.java)
             startActivity(intent)
         }
         signUpTV.setOnClickListener {

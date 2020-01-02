@@ -21,8 +21,8 @@ class SignupActivity: CustomAppActivity() {
             this.finish()
         }
         signUpButton.setOnClickListener {
-            if(validateField()){
-                val intent = Intent(applicationContext, DonorHomeActivity::class.java)
+            if(validateFields()){
+                val intent = Intent(applicationContext, HomeActivity::class.java)
                 startActivity(intent)
             }
         }
@@ -39,7 +39,7 @@ class SignupActivity: CustomAppActivity() {
         stateTVError.visibility = View.GONE
     }
 
-    private fun validateField():Boolean {
+    private fun validateFields():Boolean {
         hideErrorMessages()
         var flag = true
         if(nameET.text!!.isEmpty()){
