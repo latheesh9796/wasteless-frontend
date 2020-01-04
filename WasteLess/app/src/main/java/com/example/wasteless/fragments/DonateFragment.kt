@@ -7,10 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.wasteless.R
 import kotlinx.android.synthetic.main.fragment_donate.*
-import android.content.DialogInterface
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
 class DonateFragment  : Fragment(){
@@ -36,12 +33,6 @@ class DonateFragment  : Fragment(){
             hideErrorMessages()
             if(validateFields()){
                 Toast.makeText(context,"Donation Successful",Toast.LENGTH_SHORT)
-//                MaterialAlertDialogBuilder(context)
-//                    .setTitle("Confirm")
-//                    .setMessage("Are you sure that you can pick this up under 30 minutes?")
-//                    .setPositiveButton("Yes", null)
-//                    .setNegativeButton("No",null)
-//                    .show()
             }
         }
     }

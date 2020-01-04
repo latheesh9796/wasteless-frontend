@@ -67,6 +67,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:id="@+id/postcell_pickupBtn"
         android:text="Pickup"></Button>
 </LinearLayout>
 </androidx.cardview.widget.CardView>
