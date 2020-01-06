@@ -68,13 +68,12 @@ class AboutMeFragment : Fragment(){
     }
 
     private fun hideErrorMessages() {
-        aboutme_nameTVError.visibility = View.GONE
-        aboutme_addressOneTVError.visibility = View.GONE
-        aboutme_addressTwoTVError.visibility = View.GONE
-        aboutme_cityTVError.visibility = View.GONE
-        aboutme_stateTVError.visibility = View.GONE
-        aboutme_phoneTVError.visibility = View.GONE
-        aboutme_zipTVError.visibility = View.GONE
+        aboutme_addressOneET.error = null
+        aboutme_addressTwoET.error = null
+        aboutme_cityET.error = null
+        aboutme_stateET.error = null
+        aboutme_zipET.error = null
+        aboutme_phoneET.error = null
 
     }
 

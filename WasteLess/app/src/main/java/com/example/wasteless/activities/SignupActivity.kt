@@ -6,28 +6,41 @@ import android.os.Bundle
 import android.os.StrictMode
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.wasteless.R
 import com.example.wasteless.model.Participant
+import com.example.wasteless.utils.StringUtils
 import com.example.wasteless.utils.Utilities
 import kotlinx.android.synthetic.main.activity_signup.*
 import retrofit2.Call
 import com.example.wasteless.viewmodels.ParticipantViewModel
 import retrofit2.Callback
 import retrofit2.Response
+import android.view.ViewGroup
+import android.widget.LinearLayout
 
 
 class SignupActivity: CustomAppActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(com.example.wasteless.R.layout.activity_signup)
         setButtonActions()
         hideErrorMessages()
+        //nameET.error = "Not empty"
+        //setUpAutocompleteTextview()
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build() //For accessing localhost or any http request
         StrictMode.setThreadPolicy(policy)                                 //Remove before production
+    }
+
+    private fun setUpAutocompleteTextview() {
+        val adapter = ArrayAdapter<String>(this,R.layout.custom_list_item, R.id.text_view_list_item,StringUtils().states)
+        //stateET.setAdapter(adapter)
     }
 
     private fun setButtonActions() {
@@ -84,16 +97,16 @@ class SignupActivity: CustomAppActivity() {
     }
 
     private fun hideErrorMessages(){
-        nameTVError.visibility = View.GONE
-        emailTVError.visibility = View.GONE
-        passwordTVError.visibility = View.GONE
-        retypePasswordTVError.visibility = View.GONE
-        addressOneTVError.visibility = View.GONE
-        addressTwoTVError.visibility = View.GONE
-        cityTVError.visibility = View.GONE
-        zipTVError.visibility = View.GONE
-        stateTVError.visibility = View.GONE
-        phoneTVError.visibility = View.GONE
+        nameET.error = null
+        emailET.error = null
+        passwordET.error = null
+        retypePasswordET.error = null
+        addressOneET.error = null
+        addressTwoET.error = null
+        cityET.error = null
+        stateET.error = null
+        zipET.error = null
+        phoneET.error = null
     }
 
     private fun validateFields():Boolean {
@@ -101,54 +114,46 @@ class SignupActivity: CustomAppActivity() {
         var flag = true
         if(nameET.text!!.isEmpty()){
             flag = false
-            nameTVError.visibility = View.VISIBLE
+            nameET.error = getString(R.string.field_empty)
         }
         if(emailET.text!!.isEmpty()){
             flag = false
-            emailTVError.visibility = View.VISIBLE
+            emailET.error = getString(R.string.field_empty)
         }
         if(passwordET.text!!.isEmpty()){
             flag = false
-            passwordTVError.visibility = View.VISIBLE
+           passwordET.error= getString(R.string.field_empty)
         }
         if(retypePasswordET.text!!.isEmpty()){
             flag = false
-            retypePasswordTVError.text = "Field Cannot be empty"
-            retypePasswordTVError.visibility = View.VISIBLE
+            retypePasswordET.error = getString(R.string.field_empty)
         }
         if(addressOneET.text!!.isEmpty()){
             flag = false
-            addressOneTVError.visibility = View.VISIBLE
-        }
-        if(addressTwoET.text!!.isEmpty()){
-            flag = false
-            addressTwoTVError.visibility = View.VISIBLE
+            addressOneET.error = getString(R.string.field_empty)
         }
         if(stateET.text!!.isEmpty()){
             flag = false
-            stateTVError.visibility = View.VISIBLE
+            stateET.error = getString(R.string.field_empty)
         }
         if(cityET.text!!.isEmpty()){
             flag = false
-            cityTVError.visibility = View.VISIBLE
+            cityET.error = getString(R.string.field_empty)
         }
 
         if(phoneET.text!!.isEmpty()){
             flag = false
-            phoneTVError.visibility = View.VISIBLE
+            phoneET.error = getString(R.string.field_empty)
         }
 
         if(zipET.text!!.isEmpty()){
             flag = false
-            zipTVError.visibility = View.VISIBLE
+            zipET.error = getString(R.string.field_empty)
         }
         if((!passwordET.text!!.isEmpty() && !retypePasswordET.text!!.isEmpty()) ){
             if((passwordET.text.toString() != retypePasswordET.text.toString())){
-                Toast.makeText(this,"pass"+passwordET.text,Toast.LENGTH_SHORT)
-                Toast.makeText(this,"retype"+retypePasswordET.text,Toast.LENGTH_SHORT)
                 flag = false
-                retypePasswordTVError.text = "Password does not match"
-                retypePasswordTVError.visibility = View.VISIBLE
+                retypePasswordET.error = "Passwords do not match"
             }
         }
         return flag

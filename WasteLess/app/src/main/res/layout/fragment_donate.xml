@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal">
 <LinearLayout
@@ -23,6 +25,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:hint="Description"
+        app:errorEnabled="true"
         android:layout_marginHorizontal="15dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -37,19 +40,13 @@
             android:id="@+id/donate_descriptionET"
              />
     </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:textColor="@color/errorColor"
-        android:id="@+id/donate_descriptionTVError"
-        android:text="@string/field_empty"/>
     <com.google.android.material.textfield.TextInputLayout
         style="@style/TextLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:hint="Address Line 1"
+        app:errorEnabled="true"
         android:layout_marginHorizontal="15dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -60,19 +57,13 @@
             android:id="@+id/donate_addressOneET"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:textColor="@color/errorColor"
-        android:id="@+id/donate_addressOneTVError"
-        android:text="@string/field_empty"/>
     <com.google.android.material.textfield.TextInputLayout
         style="@style/TextLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:hint="Address Line 2"
+        app:errorEnabled="true"
         android:layout_marginHorizontal="15dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -84,19 +75,13 @@
             android:inputType="text"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:textColor="@color/errorColor"
-        android:id="@+id/donate_addressTwoTVError"
-        android:text="@string/field_empty"/>
     <com.google.android.material.textfield.TextInputLayout
         style="@style/TextLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:hint="City"
+        app:errorEnabled="true"
         android:layout_marginHorizontal="15dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -108,19 +93,13 @@
             android:inputType="text"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:textColor="@color/errorColor"
-        android:id="@+id/donate_cityTVError"
-        android:text="@string/field_empty"/>
     <com.google.android.material.textfield.TextInputLayout
         style="@style/TextLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:hint="State"
+        app:errorEnabled="true"
         android:layout_marginHorizontal="15dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -133,19 +112,13 @@
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:textColor="@color/errorColor"
-        android:id="@+id/donate_stateTVError"
-        android:text="@string/field_empty"/>
     <com.google.android.material.textfield.TextInputLayout
         style="@style/TextLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:hint="Zip Code"
+        app:errorEnabled="true"
         android:layout_marginHorizontal="15dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -156,19 +129,14 @@
             android:id="@+id/donate_zipET"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:textColor="@color/errorColor"
-        android:id="@+id/donate_zipTVError"
-        android:text="@string/field_empty"/>
+
     <com.google.android.material.textfield.TextInputLayout
         style="@style/TextLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:hint="Phone"
+        app:errorEnabled="true"
         android:layout_marginHorizontal="15dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -179,13 +147,7 @@
             android:id="@+id/donate_phoneET"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:textColor="@color/errorColor"
-        android:id="@+id/donate_phoneTVError"
-        android:text="@string/field_empty"/>
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

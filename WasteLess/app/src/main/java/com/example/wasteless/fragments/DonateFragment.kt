@@ -60,45 +60,41 @@ class DonateFragment  : Fragment(){
         var flag = true
         if(donate_descriptionET.text!!.isEmpty()){
             flag = false
-            donate_descriptionTVError.visibility = View.VISIBLE
+            donate_descriptionET.error = getString(R.string.field_empty)
         }
         if(donate_addressOneET.text!!.isEmpty()){
             flag = false
-            donate_addressOneTVError.visibility = View.VISIBLE
-        }
-        if(donate_addressTwoET.text!!.isEmpty()){
-            flag = false
-            donate_addressTwoTVError.visibility = View.VISIBLE
-        }
-        if(donate_stateET.text!!.isEmpty()){
-            flag = false
-            donate_stateTVError.visibility = View.VISIBLE
+            donate_addressOneET.error = getString(R.string.field_empty)
         }
         if(donate_cityET.text!!.isEmpty()){
             flag = false
-            donate_cityTVError.visibility = View.VISIBLE
+            donate_cityET.error = getString(R.string.field_empty)
+        }
+        if(donate_stateET.text!!.isEmpty()){
+            flag = false
+            donate_stateET.error = getString(R.string.field_empty)
         }
 
         if(donate_zipET.text!!.isEmpty()){
             flag = false
-            donate_zipTVError.visibility = View.VISIBLE
+            donate_zipET.error = getString(R.string.field_empty)
         }
 
         if(donate_zipET.text!!.isEmpty()){
             flag = false
-            donate_zipTVError.visibility = View.VISIBLE
+            donate_phoneET.error = getString(R.string.field_empty)
         }
         return flag
     }
 
     private fun hideErrorMessages(){
-        donate_descriptionTVError.visibility = View.GONE
-        donate_addressOneTVError.visibility = View.GONE
-        donate_addressTwoTVError.visibility = View.GONE
-        donate_cityTVError.visibility = View.GONE
-        donate_stateTVError.visibility = View.GONE
-        donate_zipTVError.visibility = View.GONE
-        donate_phoneTVError.visibility = View.GONE
+        donate_descriptionET.error = null
+        donate_addressOneET.error = null
+        donate_addressTwoET.error = null
+        donate_cityET.error = null
+        donate_stateET.error = null
+        donate_zipET.error = null
+        donate_phoneET.error = null
     }
 
     companion object {
