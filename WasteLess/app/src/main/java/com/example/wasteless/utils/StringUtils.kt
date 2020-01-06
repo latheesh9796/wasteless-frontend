@@ -1,0 +1,5 @@
+package com.example.wasteless.utils
+
+class StringUtils {
+    val states = arrayOf("Connecticut", "Pennsylvania", "Maine", "Virginia", "Vermont", "Illinois", "Iowa", "Hawaii", "Nebraska", "M innesota", "Louisiana", "New Jersey", "Indiana", "Utah", "Oregon", "Texas", "California", "Idaho", "Ohio", "Nevada", "American Samoa", "Colorado", "Arizona", "Washington", "Georgia", "Northern Mariana Islands", "Alabama", "Wisconsin", "Rhode Island", "New Hampshire", "South Carolina", "Michigan", "", "Kansas", "Tennessee", "Arka nsas", "Wyoming", "Delaware", "Montana", "Oklahoma", "Puerto Rico", "Florida", "Virgin Islands", "Marshall Islands", "North Dakota", "Alaska", "South Dakota", "New Mexic o", "Palau", "North Carolina", "Missouri",  "Mississippi", "Kentucky", "West Virginia", "Guam", "Massachusetts", "Maryland")
+}

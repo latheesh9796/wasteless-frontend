@@ -132,12 +132,36 @@
             android:id="@+id/donate_stateET"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:textColor="@color/errorColor"
         android:id="@+id/donate_stateTVError"
+        android:text="@string/field_empty"/>
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/TextLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:hint="Zip Code"
+        android:layout_marginHorizontal="15dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:inputType="number"
+            android:id="@+id/donate_zipET"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:textColor="@color/errorColor"
+        android:id="@+id/donate_zipTVError"
         android:text="@string/field_empty"/>
     <com.google.android.material.textfield.TextInputLayout
         style="@style/TextLabel"

@@ -1,5 +1,6 @@
 package com.example.wasteless.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,24 @@ class DonateFragment  : Fragment(){
         super.onActivityCreated(savedInstanceState)
         hideErrorMessages()
         setButtonActions()
+        setUserDetails()
+    }
+
+    private fun setUserDetails() {
+
+        val sharedPreference =  this.activity!!.getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE)
+        val address1 = sharedPreference.getString("address1","--")
+        val address2 = sharedPreference.getString("address2","--")
+        val city = sharedPreference.getString("city","--")
+        val state = sharedPreference.getString("state","--")
+        val zipcode = sharedPreference.getString("zipcode","0")
+        val phone = sharedPreference.getString("phone","0")
+        donate_addressOneET.setText(address1)
+        donate_addressTwoET.setText(address2)
+        donate_cityET.setText(city)
+        donate_stateET.setText(state)
+        donate_zipET.setText(zipcode)
+        donate_phoneET.setText(phone)
     }
 
     private fun setButtonActions(){
@@ -59,6 +78,16 @@ class DonateFragment  : Fragment(){
             flag = false
             donate_cityTVError.visibility = View.VISIBLE
         }
+
+        if(donate_zipET.text!!.isEmpty()){
+            flag = false
+            donate_zipTVError.visibility = View.VISIBLE
+        }
+
+        if(donate_zipET.text!!.isEmpty()){
+            flag = false
+            donate_zipTVError.visibility = View.VISIBLE
+        }
         return flag
     }
 
@@ -68,6 +97,8 @@ class DonateFragment  : Fragment(){
         donate_addressTwoTVError.visibility = View.GONE
         donate_cityTVError.visibility = View.GONE
         donate_stateTVError.visibility = View.GONE
+        donate_zipTVError.visibility = View.GONE
+        donate_phoneTVError.visibility = View.GONE
     }
 
     companion object {
