@@ -1,6 +1,7 @@
 package com.example.wasteless.activities
 
 import android.os.Bundle
+import android.os.StrictMode
 import androidx.appcompat.app.AppCompatActivity
 
 open class CustomAppActivity: AppCompatActivity() {
@@ -10,6 +11,10 @@ open class CustomAppActivity: AppCompatActivity() {
         supportActionBar?.let {actionBar ->
             actionBar.hide()
         }
+
+        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build() //For accessing localhost or any http request
+        StrictMode.setThreadPolicy(policy)
+
     }
 
 }

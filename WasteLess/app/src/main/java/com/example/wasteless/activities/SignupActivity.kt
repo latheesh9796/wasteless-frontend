@@ -33,9 +33,7 @@ class SignupActivity: CustomAppActivity() {
         setButtonActions()
         hideErrorMessages()
         //nameET.error = "Not empty"
-        //setUpAutocompleteTextview()
-        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build() //For accessing localhost or any http request
-        StrictMode.setThreadPolicy(policy)                                 //Remove before production
+        //setUpAutocompleteTextview()                           //Remove before production
     }
 
     private fun setUpAutocompleteTextview() {
@@ -51,7 +49,7 @@ class SignupActivity: CustomAppActivity() {
             if(validateFields()){
                 val name = nameET.text.toString()
                 val email = emailET.text.toString()
-                val password = emailET.text.toString()
+                val password = passwordET.text.toString()
                 val address1 = addressOneET.text.toString()
                 val address2 = addressTwoET.text.toString()
                 val city = cityET.text.toString()
@@ -63,7 +61,7 @@ class SignupActivity: CustomAppActivity() {
                     var participantViewModel = ViewModelProviders.of(this).get(ParticipantViewModel::class.java)
                     participantViewModel.init()
                     participantViewModel.createParticipant(participant)
-                    participantViewModel.getParticipantRepository().observe(this, Observer {
+                    participantViewModel.getParticipantData().observe(this, Observer {
                         it?.let {
                             if(it.id != null) {
                                 Log.d("Successfully added","bla bla bla")
@@ -83,6 +81,7 @@ class SignupActivity: CustomAppActivity() {
     private fun updateSharedPreferences(participant:Participant) {
         val sharedPreference =  getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE)
         var editor = sharedPreference.edit()
+        editor.putString("id",participant.id!!.toString())
         editor.putString("name",participant.name)
         editor.putString("email",participant.email)
         editor.putString("password",participant.password)
@@ -155,6 +154,10 @@ class SignupActivity: CustomAppActivity() {
                 flag = false
                 retypePasswordET.error = "Passwords do not match"
             }
+        }
+        if(!StringUtils().isValidState(stateET.text.toString())){
+            stateET.error = "Enter a valid state name"
+            flag = false
         }
         return flag
     }

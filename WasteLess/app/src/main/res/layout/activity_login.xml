@@ -40,6 +40,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/login_emailET"
                 android:inputType="textEmailAddress"
                 android:background="@android:color/transparent"
                 android:maxLines="1" />
@@ -56,6 +57,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/login_passwordET"
                 android:background="@android:color/transparent"
                 android:inputType="textPassword"
                 android:maxLines="1" />

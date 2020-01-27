@@ -2,6 +2,7 @@ package com.example.wasteless.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,19 @@ import androidx.fragment.app.Fragment
 import com.example.wasteless.R
 import kotlinx.android.synthetic.main.fragment_donate.*
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.wasteless.adapters.PickupPostsAdapter
+import com.example.wasteless.model.Donation
+import com.example.wasteless.utils.StringUtils
+import com.example.wasteless.utils.Utilities
+import com.example.wasteless.viewmodels.DonationViewModel
+import kotlinx.android.synthetic.main.fragment_pickup.*
+import java.sql.Timestamp
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.util.*
 
 
 class DonateFragment  : Fragment(){
@@ -51,7 +65,33 @@ class DonateFragment  : Fragment(){
         donate_donateButton.setOnClickListener {
             hideErrorMessages()
             if(validateFields()){
-                Toast.makeText(context,"Donation Successful",Toast.LENGTH_SHORT)
+                val sharedPreference =  this.activity!!.getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE)
+                val donorName = sharedPreference.getString("name","--")
+                val donorId = sharedPreference.getString("id","-1")
+                val description = donate_descriptionET.text.toString()
+                val address1 = donate_addressOneET.text.toString()
+                val address2 = donate_addressTwoET.text.toString()
+                val city = donate_cityET.text.toString()
+                val state = donate_stateET.text.toString()
+                val zipcode = donate_zipET.text.toString()
+                val phone = donate_phoneET.text.toString()
+                val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+                val currentDate = sdf.format(Date())
+                val donation = Donation(description, currentDate,donorName!!,address1,address2,city,
+                    "USA",donorId!!,phone,state,null,"-1","Available",zipcode)
+                var donationViewModel = ViewModelProviders.of(this).get(DonationViewModel::class.java)
+                donationViewModel.init()
+                donationViewModel.createDonation(donation)
+                donationViewModel.getDonationCreationResponse().observe(this, Observer {
+                    it?.let {
+                        if(it != null) {
+                            Log.e("creation","Created donation")
+
+                        } else {
+                            Log.e("error","Couldn't create donation")
+                        }
+                    }
+                })
             }
         }
     }
@@ -84,8 +124,13 @@ class DonateFragment  : Fragment(){
             flag = false
             donate_phoneET.error = getString(R.string.field_empty)
         }
+        if(!StringUtils().isValidState(donate_stateET.text.toString())){
+            donate_stateET.error = "Enter a valid state name"
+        }
         return flag
     }
+
+
 
     private fun hideErrorMessages(){
         donate_descriptionET.error = null

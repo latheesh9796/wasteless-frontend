@@ -3,13 +3,21 @@ package com.example.wasteless.fragments
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.example.wasteless.R
 import com.example.wasteless.activities.LoginActivity
 import com.example.wasteless.activities.SignupActivity
+import com.example.wasteless.model.Participant
+import com.example.wasteless.utils.StringUtils
+import com.example.wasteless.utils.Utilities
+import com.example.wasteless.viewmodels.ParticipantViewModel
 import kotlinx.android.synthetic.main.activity_signup.*
 import kotlinx.android.synthetic.main.fragment_aboutme.*
 
@@ -49,12 +57,39 @@ class AboutMeFragment : Fragment(){
         aboutme_stateET.setText(state)
         aboutme_zipET.setText(zipcode)
         aboutme_phoneET.setText(phone)
-
     }
 
     private fun setButtonActions() {
         aboutme_updateButton.setOnClickListener {
-
+            hideErrorMessages()
+            if(validateFields()){
+                val sharedPreference =  this.activity!!.getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE)
+                val name = aboutme_nameET.text!!.toString()
+                val id = sharedPreference.getString("id","0")
+                val password = sharedPreference.getString("password","--")
+                val email = sharedPreference.getString("email","--")
+                val address1 = aboutme_addressOneET.text!!.toString()
+                val address2 = aboutme_addressOneET.text!!.toString()
+                val city = aboutme_cityET.text!!.toString()
+                val state = aboutme_stateET.text!!.toString()
+                val zipcode = aboutme_zipET.text!!.toString()
+                val phone = aboutme_phoneET.text!!.toString()
+                val participant = Participant(address1,address2,city,"usa",email!!,id!!.toInt(),name!!,password!!,phone,state,zipcode)
+                if(Utilities().isInternetAvailable()){
+                    var participantViewModel = ViewModelProviders.of(this).get(ParticipantViewModel::class.java)
+                    participantViewModel.init()
+                    participantViewModel.updateParticipant(participant)
+                    participantViewModel.getUpdatedParticipantData().observe(this, Observer {
+                        it?.let {
+                            if(it.id != null) {
+                                Log.d("Successfully updated","bla bla bla")
+                                updateSharedPreferences(it)
+                            } else {
+                            }
+                        }
+                    })
+                }
+            }
         }
         aboutme_logoutButton.setOnClickListener {
 
@@ -65,6 +100,57 @@ class AboutMeFragment : Fragment(){
             val intent = Intent(this.context, LoginActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun updateSharedPreferences(participant: Participant) {
+        val sharedPreference =  context!!.getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE)
+        var editor = sharedPreference.edit()
+        editor.putString("id",participant.id!!.toString())
+        editor.putString("name",participant.name)
+        editor.putString("email",participant.email)
+        editor.putString("password",participant.password)
+        editor.putString("address1",participant.address1)
+        editor.putString("address2",participant.address2)
+        editor.putString("state",participant.state)
+        editor.putString("city",participant.city)
+        editor.putString("zipcode",participant.zipcode)
+        editor.putString("country",participant.country)
+        editor.putString("phone",participant.phone)
+        editor.commit()
+
+    }
+
+    private fun validateFields(): Boolean {
+        var flag = true
+        if(aboutme_nameET.text!!.isEmpty()){
+            aboutme_nameET.error = getString(R.string.field_empty)
+            flag = false
+        }
+        if(aboutme_addressOneET.text!!.isEmpty()){
+            aboutme_addressOneET.error = getString(R.string.field_empty)
+            flag = false
+        }
+        if(aboutme_cityET.text!!.isEmpty()){
+            aboutme_cityET.error = getString(R.string.field_empty)
+            flag = false
+        }
+        if(aboutme_stateET.text!!.isEmpty()){
+            aboutme_stateET.error = getString(R.string.field_empty)
+            flag = false
+        }
+        if(aboutme_zipET.text!!.isEmpty()){
+            aboutme_zipET.error = getString(R.string.field_empty)
+            flag = false
+        }
+        if(aboutme_phoneET.text!!.isEmpty()){
+            aboutme_phoneET.error = getString(R.string.field_empty)
+            flag = false
+        }
+        if(!StringUtils().isValidState(aboutme_stateET.text!!.toString())){
+            aboutme_stateET.error = "Enter a valid state"
+            flag = false
+        }
+        return flag
     }
 
     private fun hideErrorMessages() {

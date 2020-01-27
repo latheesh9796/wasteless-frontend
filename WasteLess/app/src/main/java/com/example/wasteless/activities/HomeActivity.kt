@@ -28,6 +28,7 @@ class HomeActivity: CustomAppActivity() {
             }
             true
         })
+        bottom_navigation.selectedItemId = R.id.pickup
     }
 
     private fun openFragment(fragment: Fragment) {

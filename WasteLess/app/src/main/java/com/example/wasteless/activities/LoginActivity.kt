@@ -1,10 +1,20 @@
 package com.example.wasteless.activities
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.example.wasteless.R
+import com.example.wasteless.model.LoginCredential
+import com.example.wasteless.model.Participant
+import com.example.wasteless.utils.Utilities
+import com.example.wasteless.viewmodels.ParticipantViewModel
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_login.backButton
 
 class LoginActivity : CustomAppActivity() {
 
@@ -17,12 +27,52 @@ class LoginActivity : CustomAppActivity() {
 
     private fun setButtonActions() {
         loginButton.setOnClickListener {
-            val intent = Intent(applicationContext, HomeActivity::class.java)
-            startActivity(intent)
+            validateCredentials()
         }
         signUpTV.setOnClickListener {
             val intent = Intent(applicationContext, SignupActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun validateCredentials() {
+        val email = login_emailET.text.toString()
+        val password = login_passwordET.text.toString()
+        if(Utilities().isInternetAvailable()){
+            val credentials = LoginCredential(email,password)
+            var participantViewModel = ViewModelProviders.of(this).get(ParticipantViewModel::class.java)
+            participantViewModel.init()
+            participantViewModel.validateCredentials(credentials)
+            participantViewModel.getParticipantData().observe(this, Observer {
+                it?.let {
+                    if(it.id != null) {
+                        Log.d("Login","success")
+                        updateSharedPreferences(it)
+                        val intent = Intent(applicationContext, HomeActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this,"Login error", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
+        }
+    }
+
+    private fun updateSharedPreferences(participant: Participant) {
+        val sharedPreference =  this.getSharedPreferences(getString(R.string.pref_name), Context.MODE_PRIVATE)
+        var editor = sharedPreference.edit()
+        editor.putString("id",participant.id!!.toString())
+        editor.putString("name",participant.name)
+        editor.putString("email",participant.email)
+        editor.putString("password",participant.password)
+        editor.putString("address1",participant.address1)
+        editor.putString("address2",participant.address2)
+        editor.putString("state",participant.state)
+        editor.putString("city",participant.city)
+        editor.putString("zipcode",participant.zipcode)
+        editor.putString("country",participant.country)
+        editor.putString("phone",participant.phone)
+        editor.commit()
+
     }
 }

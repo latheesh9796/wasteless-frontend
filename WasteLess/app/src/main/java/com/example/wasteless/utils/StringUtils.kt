@@ -13,7 +13,7 @@ class StringUtils {
         "Georgia",
         "Hawaii",
         "Idaho",
-        "Illinoi",
+        "Illinois",
         "Indiana",
         "Iowa",
         "Kansas",
@@ -38,7 +38,7 @@ class StringUtils {
         "Ohio",
         "Oklahoma",
         "Oregon",
-        "Pennsylvani",
+        "Pennsylvania",
         "Rhode Island",
         "South Carolina",
         "South Dakota",
@@ -51,4 +51,13 @@ class StringUtils {
         "West Virginia",
         "Wisconsin",
         "Wyoming")
+
+    fun isValidState(state:String):Boolean{
+        states.forEach {
+            if(it.equals(state,ignoreCase = true)){
+                return true
+            }
+        }
+        return false
+    }
 }
